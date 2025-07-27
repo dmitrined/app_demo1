@@ -14,7 +14,6 @@ body {
     min-height: 100vh;
     box-sizing: border-box;
     position: relative; /* Для правильного позиционирования фиксированных элементов */
-
 }
 
 /* Контейнер приложения */
@@ -31,33 +30,45 @@ body {
     position: relative; /* Для контекста позиционирования фиксированных элементов внутри */
 }
 
-/* Заголовок приложения - теперь фиксированный */
+/* Заголовок приложения - теперь нефиксированный */
 .app-header {
     background-color: #f3f4f6;
-    height: 50px; /* Уменьшаем высоту заголовка */
-    /* Изменено: padding по горизонтали теперь 24px, как у main-content */
-    padding: 10px 24px; /* Уменьшаем padding для фиксированной высоты */
+    padding: 24px; /* Возвращаем стандартный padding */
     text-align: center;
     color: #374151;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    /* Удалены border-bottom-left-radius и border-bottom-right-radius, чтобы следовать app-container */
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    position: fixed; /* Фиксированное позиционирование */
-    top: 0; /* Привязка к верху экрана */
-    left: 50%; /* Центрирование по горизонтали */
-    transform: translateX(-50%); /* Точное центрирование */
-    width: 100%; /* Ширина 100% от родителя (viewport) */
+    /* Удалены все свойства фиксированного позиционирования */
+    /* position: fixed; */
+    /* top: 0; */
+    /* left: 50%; */
+    /* transform: translateX(-50%); */
+    /* z-index: 1000; */
+    width: 100%; /* Ширина 100% от родителя (app-container) */
     max-width: 480px; /* Устанавливаем максимальную ширину как у app-container */
-    display: flex; /* Используем flexbox для выравнивания содержимого */
-    align-items: center; /* Выравнивание по центру по вертикали */
-    justify-content: space-between; /* Распределение элементов по горизонтали */
-    z-index: 1000; /* Убедитесь, что панель находится поверх другого контента */
+    /* Удалена фиксированная высота */
+    /* height: 60px; */
+    display: flex; /* Используем flexbox */
+    flex-direction: column; /* Элементы будут располагаться по вертикали */
+    align-items: center; /* Центрируем элементы по горизонтали */
     box-sizing: border-box; /* Убедитесь, что padding включен в ширину */
+}
+
+/* Новый контейнер для логотипа и иконок в заголовке */
+.header-top-row {
+    width: 100%; /* Занимает всю доступную ширину header */
+    display: flex;
+    justify-content: space-between; /* Лого слева, иконки справа */
+    align-items: center;
+    margin-bottom: 10px; /* Отступ от h1 ниже */
 }
 
 /* Логотип в заголовке */
 .header-logo {
     height: 40px; /* Уменьшаем высоту логотипа */
     object-fit: contain;
-    /* Убираем автоматические отступы и display: block, так как теперь flex */
     margin-left: 0;
     margin-right: 0;
 }
@@ -84,13 +95,13 @@ body {
     font-size: 24px; /* Размер иконок */
 }
 
-/* Подзаголовок (теперь h1 и перемещен в customer-card-section) */
+/* Подзаголовок (теперь h1 и перемещен в header) */
 .header-subtitle {
     font-size: 1.5rem; /* Увеличиваем размер для h1 */
     font-weight: 600; /* Делаем его жирнее */
-    margin-top: 0; /* Убираем верхний отступ, так как он теперь первый */
+    margin-top: 0; /* Убираем верхний отступ */
     color:rgb(128, 97, 20);
-    margin-bottom: 16px; /* Отступ снизу, чтобы отделить от QR-кода */
+    /* margin-bottom: 16px; */ /* Отступ снизу, если нужен, но align-items: center уже центрирует */
 }
 
 /* Основное содержимое */
@@ -100,8 +111,8 @@ body {
     flex-direction: column;
     gap: 32px;
     flex-grow: 1; /* Позволяет основному содержимому занимать доступное пространство */
-    /* Устанавливаем padding-top, чтобы контент не скрывался под фиксированным заголовком */
-    padding-top: 84px; /* Высота заголовка (60px) + его padding (24px) */
+    /* Удален padding-top, так как header больше не фиксирован */
+    /* padding-top: 84px; */
     padding-bottom: 70px; /* Уменьшено для сокращения пустого пространства */
 }
 
@@ -391,6 +402,10 @@ body {
         box-shadow: none; /* Убираем тень на маленьких экранах */
     }
     .app-header {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        border-bottom-left-radius: 0; /* Убедитесь, что на маленьких экранах нет скругления снизу */
+        border-bottom-right-radius: 0; /* Убедитесь, что на маленьких экранах нет скругления снизу */
         max-width: 100%; /* Убедитесь, что на маленьких экранах она занимает всю ширину */
     }
     .bottom-nav {

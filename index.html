@@ -11,28 +11,31 @@
 </head>
 <body>
     <div class="app-container">
-        <!-- Заголовок приложения - теперь фиксированный -->
+        <!-- Заголовок приложения - теперь нефиксированный -->
         <header class="app-header">
-            <img src="https://fellbacher-weine.de/wp-content/uploads/2021/02/fellbacherWeine_2018-300x51-1.png"
-                 alt="Fellbacher Weingärtner Logo"
-                 class="header-logo"
-                 onerror="this.onerror=null;this.src='https://placehold.co/300x51/8B0000/FFFFFF?text=Fellbacher+Weingärtner+Logo';">
-            <div class="header-icons">
-                <!-- Иконка колокольчика -->
-                <a href="#" class="header-icon-link">
-                    <i class="fas fa-bell header-icon"></i>
-                </a>
-                <!-- Иконка корзины -->
-                <a href="#" class="header-icon-link">
-                    <i class="fa-solid fa-cart-shopping"></i>
-                </a>
+            <!-- Новый контейнер для логотипа и иконок для их выравнивания -->
+            <div class="header-top-row">
+                <img src="https://fellbacher-weine.de/wp-content/uploads/2021/02/fellbacherWeine_2018-300x51-1.png"
+                     alt="Fellbacher Weingärtner Logo"
+                     class="header-logo"
+                     onerror="this.onerror=null;this.src='https://placehold.co/300x51/8B0000/FFFFFF?text=Fellbacher+Weingärtner+Logo';">
+                <div class="header-icons">
+                    <!-- Иконка колокольчика -->
+                    <a href="#" class="header-icon-link">
+                        <i class="fas fa-bell header-icon"></i>
+                    </a>
+                    <!-- Иконка корзины (изменена на сумку для покупок) -->
+                    <a href="#" class="header-icon-link">
+                        <i class="fa-regular fa-cart-shopping"></i>
+                    </a>
+                </div>
             </div>
+            <!-- Подзаголовок теперь h1 и перемещен в header, расположен по центру -->
+            <h1 class="header-subtitle">Ihre Weinwelt in der Tasche</h1>
         </header>
 
         <main class="main-content">
             <section class="customer-card-section">
-                <!-- Подзаголовок теперь h1 и перемещен сюда, стал первым элементом -->
-                <h1 class="header-subtitle">Ihre Weinwelt in der Tasche</h1>
                 <h2 class="section-title">Ihre Digitale Kundenkarte</h2>
                 <div class="qr-code-placeholder">
                     <svg class="qr-code-icon" fill="currentColor" viewBox="0 0 24 24">
@@ -56,7 +59,7 @@
                             <div class="feature-card-content-wrapper">
                                 <div class="feature-main-content">
                                     <h3 class="feature-title">Treueprogramm</h3>
-                                    <p class="feature-description">Punkte für Einkäufe → Rabatte, Events.</p>
+                                    <p class="feature-description">Punkte für Einkäuf → Rabatte, Events.</p>
                                 </div>
                             </div>
                         </div>
@@ -74,7 +77,7 @@
                             <div class="feature-card-content-wrapper">
                                 <div class="feature-main-content">
                                     <h3 class="feature-title">Weinkatalog</h3>
-                                    <p class="feature-description">Produktbeschreibungen, Empfehlции, Bewertungen.</p>
+                                    <p class="feature-description">Produktbeschreibungen, Empfehlungen, Bewertungen.</p>
                                 </div>
                             </div>
                         </div>
@@ -91,7 +94,7 @@
                             <div class="feature-card-content-wrapper">
                                 <div class="feature-main-content">
                                     <h3 class="feature-title">Gutscheine & Angebote</h3>
-                                    <p class="feature-description">Personalisierte Rabatte и эксклюзивные акции.</p>
+                                    <p class="feature-description">Personalisierte Rabatte und exklusive Angebote.</p>
                                 </div>
                             </div>
                         </div>
