@@ -49,7 +49,7 @@ body {
     transform: translateX(-50%); /* Точное центрирование */
     width: 100%; /* Ширина 100% от родителя (viewport) */
     max-width: 480px; /* Устанавливаем максимальную ширину как у app-container */
-    height: 100px; /* Фиксированная высота */
+    height: 80px; /* Фиксированная высота */
     display: flex; /* Используем flexbox для выравнивания содержимого */
     align-items: center; /* Выравнивание по центру по вертикали */
     justify-content: space-between; /* Распределение элементов по горизонтали */
