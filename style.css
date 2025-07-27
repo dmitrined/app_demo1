@@ -169,12 +169,12 @@ body {
     display: block;
 }
 
-/* НОВАЯ: Секция для иконки и текстового содержимого внизу карточки */
+/* Секция для иконки и текстового содержимого внизу карточки */
 .feature-bottom-section {
     flex: 1; /* Занимает 10% высоты */
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Располагаем иконку и контент по краям */
+    /* Убрано justify-content: space-between; так как extra-info-container удален */
     padding: 10px 20px; /* Добавляем внутренние отступы */
     background-color: #fff;
     border-bottom-left-radius: 8px;
@@ -194,18 +194,17 @@ body {
     height: 32px;
 }
 
-/* Стили для прокручиваемого содержимого внутри карточек функций */
+/* Стили для содержимого внутри карточек функций */
 .feature-card-content-wrapper {
     flex-grow: 1; /* Позволяет обертке занимать доступное пространство */
-    display: flex; /* Делаем его flex-контейнером для горизонтальных элементов */
+    display: flex; /* Делаем его flex-контейнером */
     align-items: center; /* Выравниваем элементы по центру по вертикали */
-    overflow-x: auto; /* Включаем горизонтальную прокрутку */
-    -webkit-overflow-scrolling: touch; /* Улучшаем прокрутку на iOS */
-    scroll-snap-type: x mandatory; /* Привязка к целым элементам */
-    /* Удаляем scroll-padding, так как он может конфликтовать с min-width: 100% */
+    overflow-x: hidden; /* **Удаляем горизонтальную прокрутку** */
+    -webkit-overflow-scrolling: auto; /* Сбрасываем для Webkit */
+    scroll-snap-type: none; /* Отключаем привязку */
     scrollbar-width: none; /* Скрываем полосу прокрутки для Firefox */
     -ms-overflow-style: none; /* Скрываем полосу прокрутки для IE/Edge */
-    white-space: nowrap; /* Предотвращаем перенос строк */
+    white-space: normal; /* **Разрешаем перенос строк** */
 }
 
 /* Скрываем полосу прокрутки для Webkit-браузеров (Chrome, Safari) */
@@ -215,40 +214,11 @@ body {
 
 /* Основное содержимое функции (заголовок и описание) */
 .feature-main-content {
-    flex-shrink: 0; /* Предотвращаем сжатие */
-    scroll-snap-align: start; /* Привязка к началу */
-    min-width: 100%; /* Занимает полную ширину прокручиваемой области */
-    padding-right: 20px; /* Отступ для следующего элемента при прокрутке */
+    flex-shrink: 1; /* Разрешаем сжатие */
+    scroll-snap-align: none; /* Отключаем привязку */
+    min-width: auto; /* Сбрасываем минимальную ширину */
+    padding-right: 0; /* Удаляем отступ */
 }
-
-/* Контейнер дополнительной информации */
-.extra-info-container {
-    display: flex; /* Используем flex для размещения элементов в одну строку */
-    gap: 10px; /* Пространство между новыми элементами функций */
-    flex-shrink: 0; /* Предотвращаем сжатие */
-    scroll-snap-align: start; /* Привязка к началу */
-    min-width: 100%; /* Занимает полную ширину прокручиваемой области */
-    padding-right: 20px; /* Отступ для следующего элемента при прокрутке */
-    align-items: center; /* Выравниваем элементы по центру по вертикали */
-}
-
-/* Дополнительный элемент функции */
-.feature-extra-item {
-    min-width: 120px; /* Пример фиксированной ширины для каждого нового элемента */
-    background-color: #f3f4f6;
-    border-radius: 6px;
-    padding: 10px;
-    font-size: 0.875rem;
-    color: #374151;
-    text-align: center;
-    box-sizing: border-box;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column; /* Стек текста внутри */
-    flex-shrink: 0; /* Важно для горизонтальной прокрутки */
-}
-
 
 /* Заголовок функции */
 .feature-title {
@@ -268,7 +238,7 @@ body {
 .app-footer {
     background-color: #f3f4f6;
     /* Уменьшаем верхний отступ для сокращения пустого пространства */
-    margin-top: 24px; /* Изменено с 0 на 24px */
+    margin-top: 24px;
     padding: 16px 16px 88px 16px; /* Добавлен padding-bottom для 4-5 пустых строк */
     text-align: center;
     color: #6b7280;
