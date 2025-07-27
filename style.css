@@ -64,7 +64,7 @@ body {
     gap: 32px;
     flex-grow: 1; /* Позволяет основному содержимому занимать доступное пространство */
     /* Устанавливаем padding-bottom, чтобы футер был полностью виден над нижней панелью */
-    padding-bottom: 170px; /* Увеличено для большей гарантии видимости футера */
+    padding-bottom: 70px; /* Уменьшено для сокращения пустого пространства */
 }
 
 /* Секция клиентской карты */
@@ -131,7 +131,7 @@ body {
 .feature-card {
     background-color: #fff;
     /* Увеличиваем padding для увеличения высоты в два раза */
-    padding: 80px 20px; /* Увеличено с 40px на 80px по вертикали */
+    padding: 80px 20px; /* Сохранено 80px по вертикали */
     border-radius: 8px;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
     border: 1px solid #f3f4f6;
@@ -229,14 +229,14 @@ body {
 /* Подвал приложения */
 .app-footer {
     background-color: #f3f4f6;
-    padding: 16px;
+    /* Уменьшаем верхний отступ для сокращения пустого пространства */
+    margin-top: 24px; /* Изменено с 0 на 24px */
+    padding: 16px 16px 88px 16px; /* Добавлен padding-bottom для 4-5 пустых строк */
     text-align: center;
     color: #6b7280;
     font-size: 0.75rem;
     border-bottom-left-radius: 12px;
     border-bottom-right-radius: 12px;
-    /* Убираем верхний отступ, чтобы сократить пустое пространство */
-    margin-top: 0; /* Изменено с 16px на 0 */
 }
 
 /* Контактная информация в подвале */
