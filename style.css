@@ -130,14 +130,14 @@ body {
 /* Карточка функции */
 .feature-card {
     background-color: #fff;
-    /* Увеличиваем padding для увеличения высоты в два раза */
-    padding: 80px 20px; /* Сохранено 80px по вертикали */
+    padding: 0; /* Убираем padding, чтобы flex-элементы внутри управляли пространством */
     border-radius: 8px;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
     border: 1px solid #f3f4f6;
     display: flex;
-    align-items: flex-start;
-    gap: 16px;
+    flex-direction: column; /* Располагаем элементы вертикально */
+    min-height: 250px; /* Устанавливаем минимальную высоту для карточки */
+    overflow: hidden; /* Обрезаем содержимое, чтобы скругленные углы работали */
     transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, background-color 0.2s ease-in-out;
     cursor: grab; /* Указывает на возможность перетаскивания */
     position: relative; /* Для выравнивания дополнительного контента */
@@ -150,10 +150,42 @@ body {
     background-color: #f9fafb;
 }
 
+/* Обертка изображения внутри feature-card */
+.feature-image-wrapper {
+    flex: 9; /* Занимает 90% высоты */
+    width: 100%;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    overflow: hidden;
+    display: flex; /* Для центрирования изображения, если оно меньше */
+    justify-content: center;
+    align-items: center;
+}
+
+.feature-image {
+    width: 100%; /* Изображение занимает всю ширину обертки */
+    height: 100%; /* Изображение занимает всю высоту обертки */
+    object-fit: cover; /* Обрезаем изображение, чтобы оно заполняло контейнер */
+    display: block;
+}
+
+/* НОВАЯ: Секция для иконки и текстового содержимого внизу карточки */
+.feature-bottom-section {
+    flex: 1; /* Занимает 10% высоты */
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Располагаем иконку и контент по краям */
+    padding: 10px 20px; /* Добавляем внутренние отступы */
+    background-color: #fff;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
 /* Обертка иконки функции */
 .feature-icon-wrapper {
     flex-shrink: 0;
     color: #b91c1c;
+    margin-right: 10px; /* Отступ справа от иконки */
 }
 
 /* Иконка функции */
@@ -164,14 +196,16 @@ body {
 
 /* Стили для прокручиваемого содержимого внутри карточек функций */
 .feature-card-content-wrapper {
+    flex-grow: 1; /* Позволяет обертке занимать доступное пространство */
     display: flex; /* Делаем его flex-контейнером для горизонтальных элементов */
+    align-items: center; /* Выравниваем элементы по центру по вертикали */
     overflow-x: auto; /* Включаем горизонтальную прокрутку */
     -webkit-overflow-scrolling: touch; /* Улучшаем прокрутку на iOS */
     scroll-snap-type: x mandatory; /* Привязка к целым элементам */
-    scroll-padding: 0 10px; /* Опционально: отступ для привязки прокрутки */
-    flex-grow: 1; /* Позволяет обертке занимать доступное пространство */
+    /* Удаляем scroll-padding, так как он может конфликтовать с min-width: 100% */
     scrollbar-width: none; /* Скрываем полосу прокрутки для Firefox */
     -ms-overflow-style: none; /* Скрываем полосу прокрутки для IE/Edge */
+    white-space: nowrap; /* Предотвращаем перенос строк */
 }
 
 /* Скрываем полосу прокрутки для Webkit-браузеров (Chrome, Safari) */
@@ -179,21 +213,23 @@ body {
     display: none;
 }
 
-/* Основное содержимое функции и контейнер дополнительной информации */
-.feature-main-content,
-.extra-info-container {
-    flex-shrink: 0; /* Предотвращаем сжатие элементов */
-    width: 100%; /* Каждый элемент занимает полную ширину видимой области */
-    padding-right: 20px; /* Пространство между текущим видом и следующим слайдом */
-    box-sizing: border-box; /* Включаем padding в ширину */
+/* Основное содержимое функции (заголовок и описание) */
+.feature-main-content {
+    flex-shrink: 0; /* Предотвращаем сжатие */
+    scroll-snap-align: start; /* Привязка к началу */
+    min-width: 100%; /* Занимает полную ширину прокручиваемой области */
+    padding-right: 20px; /* Отступ для следующего элемента при прокрутке */
 }
 
 /* Контейнер дополнительной информации */
 .extra-info-container {
-    display: flex;
+    display: flex; /* Используем flex для размещения элементов в одну строку */
     gap: 10px; /* Пространство между новыми элементами функций */
-    min-width: calc(100% - 20px); /* Корректируем, чтобы он помещался рядом с основным содержимым */
-    align-items: flex-start; /* Выравниваем элементы по верхнему краю */
+    flex-shrink: 0; /* Предотвращаем сжатие */
+    scroll-snap-align: start; /* Привязка к началу */
+    min-width: 100%; /* Занимает полную ширину прокручиваемой области */
+    padding-right: 20px; /* Отступ для следующего элемента при прокрутке */
+    align-items: center; /* Выравниваем элементы по центру по вертикали */
 }
 
 /* Дополнительный элемент функции */
@@ -210,7 +246,9 @@ body {
     align-items: center;
     justify-content: center;
     flex-direction: column; /* Стек текста внутри */
+    flex-shrink: 0; /* Важно для горизонтальной прокрутки */
 }
+
 
 /* Заголовок функции */
 .feature-title {
