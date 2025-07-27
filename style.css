@@ -38,10 +38,6 @@ body {
     padding: 10px 24px; /* Уменьшаем padding для фиксированной высоты */
     text-align: center;
     color: #374151;
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
-    border-bottom-left-radius: 0; /* Убираем скругление снизу */
-    border-bottom-right-radius: 0; /* Убираем скругление снизу */
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
     position: fixed; /* Фиксированное позиционирование */
     top: 0; /* Привязка к верху экрана */
@@ -49,7 +45,6 @@ body {
     transform: translateX(-50%); /* Точное центрирование */
     width: 100%; /* Ширина 100% от родителя (viewport) */
     max-width: 480px; /* Устанавливаем максимальную ширину как у app-container */
-    height: 80px; /* Фиксированная высота */
     display: flex; /* Используем flexbox для выравнивания содержимого */
     align-items: center; /* Выравнивание по центру по вертикали */
     justify-content: space-between; /* Распределение элементов по горизонтали */
@@ -395,10 +390,6 @@ body {
         box-shadow: none; /* Убираем тень на маленьких экранах */
     }
     .app-header {
-        border-top-left-radius: 0;
-        border-top-right-radius: 0;
-        border-bottom-left-radius: 0; /* Убедитесь, что на маленьких экранах нет скругления снизу */
-        border-bottom-right-radius: 0; /* Убедитесь, что на маленьких экранах нет скругления снизу */
         max-width: 100%; /* Убедитесь, что на маленьких экранах она занимает всю ширину */
     }
     .bottom-nav {
