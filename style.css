@@ -1,9 +1,13 @@
-/* General Body and Container Styles */
+/* Общие стили для тела документа */
+html, body {
+    height: 100%; /* Убедитесь, что html и body занимают всю высоту */
+}
+
 body {
     font-family: 'Inter', sans-serif;
     background-color: #f8f8f8;
     margin: 0;
-    padding: 16px;
+    padding: 0;
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -11,17 +15,20 @@ body {
     box-sizing: border-box;
 }
 
+/* Контейнер приложения */
 .app-container {
     width: 100%;
     max-width: 480px;
     background-color: #fff;
     border-radius: 12px;
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
+    overflow: hidden; /* Оставляем overflow: hidden для контейнера */
     display: flex;
     flex-direction: column;
+    min-height: 100vh; /* Обеспечиваем, чтобы контейнер занимал всю высоту */
 }
 
+/* Заголовок приложения */
 .app-header {
     background-color: #f3f4f6;
     padding: 24px;
@@ -32,6 +39,7 @@ body {
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
+/* Логотип в заголовке */
 .header-logo {
     height: 48px;
     object-fit: contain;
@@ -40,19 +48,27 @@ body {
     display: block;
 }
 
+/* Подзаголовок в заголовке */
 .header-subtitle {
     font-size: 1.125rem;
     font-weight: 300;
     margin-top: 8px;
+    color:rgb(128, 97, 20);
 }
 
+/* Основное содержимое */
 .main-content {
     padding: 24px;
     display: flex;
     flex-direction: column;
     gap: 32px;
+    flex-grow: 1; /* Позволяет основному содержимому занимать доступное пространство */
+    /* Устанавливаем padding-bottom равным высоте нижней навигационной панели,
+       чтобы футер был полностью виден при прокрутке до конца */
+    padding-bottom: 76px; /* Рассчитанная высота bottom-nav */
 }
 
+/* Секция клиентской карты */
 .customer-card-section {
     background-color: #f9fafb;
     padding: 24px;
@@ -62,6 +78,7 @@ body {
     text-align: center;
 }
 
+/* Заголовок секции */
 .section-title {
     font-size: 1.5rem;
     font-weight: 600;
@@ -69,6 +86,7 @@ body {
     margin-bottom: 16px;
 }
 
+/* Заполнитель для QR-кода */
 .qr-code-placeholder {
     width: 192px;
     height: 192px;
@@ -83,29 +101,34 @@ body {
     padding: 8px;
 }
 
+/* Иконка QR-кода */
 .qr-code-icon {
     width: 100%;
     height: 100%;
     color: #9ca3af;
 }
 
+/* Описание секции */
 .section-description {
     margin-top: 16px;
     color: #4b5563;
     font-size: 0.875rem;
 }
 
+/* Заголовок секции основных функций */
 .core-functions-section .section-title {
     margin-bottom: 24px;
     text-align: center;
 }
 
+/* Сетка карточек функций */
 .feature-cards-grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: 16px;
 }
 
+/* Карточка функции */
 .feature-card {
     background-color: #fff;
     padding: 20px;
@@ -116,37 +139,94 @@ body {
     align-items: flex-start;
     gap: 16px;
     transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, background-color 0.2s ease-in-out;
-    cursor: pointer;
+    cursor: grab; /* Указывает на возможность перетаскивания */
+    position: relative; /* Для выравнивания дополнительного контента */
 }
 
+/* Эффект при наведении на карточку функции */
 .feature-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
     background-color: #f9fafb;
 }
 
+/* Обертка иконки функции */
 .feature-icon-wrapper {
     flex-shrink: 0;
     color: #b91c1c;
 }
 
+/* Иконка функции */
 .feature-icon {
     width: 32px;
     height: 32px;
 }
 
+/* Стили для прокручиваемого содержимого внутри карточек функций */
+.feature-card-content-wrapper {
+    display: flex; /* Делаем его flex-контейнером для горизонтальных элементов */
+    overflow-x: auto; /* Включаем горизонтальную прокрутку */
+    -webkit-overflow-scrolling: touch; /* Улучшаем прокрутку на iOS */
+    scroll-snap-type: x mandatory; /* Привязка к целым элементам */
+    scroll-padding: 0 10px; /* Опционально: отступ для привязки прокрутки */
+    flex-grow: 1; /* Позволяет обертке занимать доступное пространство */
+    scrollbar-width: none; /* Скрываем полосу прокрутки для Firefox */
+    -ms-overflow-style: none; /* Скрываем полосу прокрутки для IE/Edge */
+}
+
+/* Скрываем полосу прокрутки для Webkit-браузеров (Chrome, Safari) */
+.feature-card-content-wrapper::-webkit-scrollbar {
+    display: none;
+}
+
+/* Основное содержимое функции и контейнер дополнительной информации */
+.feature-main-content,
+.extra-info-container {
+    flex-shrink: 0; /* Предотвращаем сжатие элементов */
+    width: 100%; /* Каждый элемент занимает полную ширину видимой области */
+    padding-right: 20px; /* Пространство между текущим видом и следующим слайдом */
+    box-sizing: border-box; /* Включаем padding в ширину */
+}
+
+/* Контейнер дополнительной информации */
+.extra-info-container {
+    display: flex;
+    gap: 10px; /* Пространство между новыми элементами функций */
+    min-width: calc(100% - 20px); /* Корректируем, чтобы он помещался рядом с основным содержимым */
+    align-items: flex-start; /* Выравниваем элементы по верхнему краю */
+}
+
+/* Дополнительный элемент функции */
+.feature-extra-item {
+    min-width: 120px; /* Пример фиксированной ширины для каждого нового элемента */
+    background-color: #f3f4f6;
+    border-radius: 6px;
+    padding: 10px;
+    font-size: 0.875rem;
+    color: #374151;
+    text-align: center;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column; /* Стек текста внутри */
+}
+
+/* Заголовок функции */
 .feature-title {
     font-size: 1.25rem;
     font-weight: 500;
     color: #111827;
 }
 
+/* Описание функции */
 .feature-description {
     color: #4b5563;
     font-size: 0.875rem;
     margin-top: 4px;
 }
 
+/* Подвал приложения */
 .app-footer {
     background-color: #f3f4f6;
     padding: 16px;
@@ -155,29 +235,30 @@ body {
     font-size: 0.75rem;
     border-bottom-left-radius: 12px;
     border-bottom-right-radius: 12px;
-    margin-top: 32px;
+    /* Убираем верхний отступ, чтобы сократить пустое пространство */
+    margin-top: 0; /* Изменено с 16px на 0 */
 }
 
-/* Added styles for the new footer contact info */
+/* Контактная информация в подвале */
 .footer-contact-info {
-    margin-bottom: 10px; /* Space between contact info and copyright */
-    line-height: 1.5; /* Improve readability */
+    margin-bottom: 10px;
+    line-height: 1.5;
 }
 
 .footer-contact-info p {
-    margin: 0; /* Remove default paragraph margins */
+    margin: 0;
 }
 
 .footer-contact-info a {
-    color: #6b7280; /* Match text color */
-    text-decoration: none; /* Remove underline */
+    color: #6b7280;
+    text-decoration: none;
 }
 
 .footer-contact-info a:hover {
-    text-decoration: underline; /* Add underline on hover */
+    text-decoration: underline;
 }
 
-
+/* Стили для полосы прокрутки */
 ::-webkit-scrollbar {
     width: 8px;
 }
@@ -194,4 +275,73 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
     background: #555;
+}
+
+/* НОВАЯ: Фиксированная нижняя навигационная панель */
+.bottom-nav {
+    position: fixed; /* Фиксированное позиционирование */
+    bottom: 0; /* Привязка к низу экрана */
+    left: 50%; /* Центрирование по горизонтали */
+    transform: translateX(-50%); /* Точное центрирование */
+    width: 100%;
+    /* Устанавливаем максимальную ширину как у app-container, чтобы она совпадала с футером */
+    max-width: 480px; /* Сохранено 480px */
+    /* Цвет как у header */
+    background-color: #f3f4f6;
+    display: flex;
+    justify-content: space-around; /* Равномерное распределение элементов */
+    align-items: center;
+    padding: 10px 0;
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1); /* Тень сверху */
+    /* border-radius только снизу */
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    z-index: 1000; /* Убедитесь, что панель находится поверх другого контента */
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Цвет текста и иконок соответствует новому фону */
+    color: #374151;
+    text-decoration: none;
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 8px;
+    border-radius: 8px;
+    transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.nav-item:hover {
+    background-color: rgba(0, 0, 0, 0.1); /* Легкий фон при наведении, адаптирован под новый цвет */
+    transform: translateY(-2px); /* Небольшой подъем при наведении */
+}
+
+.nav-icon {
+    width: 24px;
+    height: 24px;
+    margin-bottom: 4px;
+    fill: currentColor; /* Иконка наследует цвет текста */
+}
+
+/* Медиа-запросы для адаптивности */
+@media (max-width: 480px) {
+    body {
+        padding: 0; /* Удаляем padding на маленьких экранах */
+    }
+    .app-container {
+        border-radius: 0; /* Убираем скругление углов на маленьких экранах */
+        box-shadow: none; /* Убираем тень на маленьких экранах */
+    }
+    .app-header {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    }
+    .bottom-nav {
+        border-radius: 0; /* На маленьких экранах убираем скругление углов для полной ширины */
+        max-width: 100%; /* Убедитесь, что на маленьких экранах она занимает всю ширину */
+    }
 }
