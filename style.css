@@ -13,6 +13,8 @@ body {
     align-items: flex-start;
     min-height: 100vh;
     box-sizing: border-box;
+    position: relative; /* Для правильного позиционирования фиксированных элементов */
+
 }
 
 /* Контейнер приложения */
@@ -26,34 +28,73 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh; /* Обеспечиваем, чтобы контейнер занимал всю высоту */
+    position: relative; /* Для контекста позиционирования фиксированных элементов внутри */
 }
 
-/* Заголовок приложения */
+/* Заголовок приложения - теперь фиксированный */
 .app-header {
     background-color: #f3f4f6;
-    padding: 24px;
+    /* Изменено: padding по горизонтали теперь 24px, как у main-content */
+    padding: 10px 24px; /* Уменьшаем padding для фиксированной высоты */
     text-align: center;
     color: #374151;
     border-top-left-radius: 12px;
     border-top-right-radius: 12px;
+    border-bottom-left-radius: 0; /* Убираем скругление снизу */
+    border-bottom-right-radius: 0; /* Убираем скругление снизу */
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    position: fixed; /* Фиксированное позиционирование */
+    top: 0; /* Привязка к верху экрана */
+    left: 50%; /* Центрирование по горизонтали */
+    transform: translateX(-50%); /* Точное центрирование */
+    width: 100%; /* Ширина 100% от родителя (viewport) */
+    max-width: 480px; /* Устанавливаем максимальную ширину как у app-container */
+    height: 100px; /* Фиксированная высота */
+    display: flex; /* Используем flexbox для выравнивания содержимого */
+    align-items: center; /* Выравнивание по центру по вертикали */
+    justify-content: space-between; /* Распределение элементов по горизонтали */
+    z-index: 1000; /* Убедитесь, что панель находится поверх другого контента */
+    box-sizing: border-box; /* Убедитесь, что padding включен в ширину */
 }
 
 /* Логотип в заголовке */
 .header-logo {
-    height: 48px;
+    height: 40px; /* Уменьшаем высоту логотипа */
     object-fit: contain;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
+    /* Убираем автоматические отступы и display: block, так как теперь flex */
+    margin-left: 0;
+    margin-right: 0;
 }
 
-/* Подзаголовок в заголовке */
+/* Контейнер для иконок в заголовке */
+.header-icons {
+    display: flex;
+    gap: 15px; /* Отступ между иконками */
+}
+
+/* Ссылка для иконки в заголовке */
+.header-icon-link {
+    color: #374151; /* Цвет иконок */
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+}
+
+.header-icon-link:hover {
+    color: #b91c1c; /* Цвет при наведении */
+}
+
+/* Иконки в заголовке */
+.header-icon {
+    font-size: 24px; /* Размер иконок */
+}
+
+/* Подзаголовок (теперь h1 и перемещен в customer-card-section) */
 .header-subtitle {
-    font-size: 1.125rem;
-    font-weight: 300;
-    margin-top: 8px;
+    font-size: 1.5rem; /* Увеличиваем размер для h1 */
+    font-weight: 600; /* Делаем его жирнее */
+    margin-top: 0; /* Убираем верхний отступ, так как он теперь первый */
     color:rgb(128, 97, 20);
+    margin-bottom: 16px; /* Отступ снизу, чтобы отделить от QR-кода */
 }
 
 /* Основное содержимое */
@@ -63,7 +104,8 @@ body {
     flex-direction: column;
     gap: 32px;
     flex-grow: 1; /* Позволяет основному содержимому занимать доступное пространство */
-    /* Устанавливаем padding-bottom, чтобы футер был полностью виден над нижней панелью */
+    /* Устанавливаем padding-top, чтобы контент не скрывался под фиксированным заголовком */
+    padding-top: 84px; /* Высота заголовка (60px) + его padding (24px) */
     padding-bottom: 70px; /* Уменьшено для сокращения пустого пространства */
 }
 
@@ -289,8 +331,10 @@ body {
 .bottom-nav {
     position: fixed; /* Фиксированное позиционирование */
     bottom: 0; /* Привязка к низу экрана */
-    left: 50%; /* Центрирование по горизонтали */
-    transform: translateX(-50%); /* Точное центрирование */
+    left: 0; /* Привязка к левому краю */
+    right: 0; /* Привязка к правому краю */
+    margin-left: auto; /* Автоматический левый отступ для центрирования */
+    margin-right: auto; /* Автоматический правый отступ для центрирования */
     width: 100%;
     /* Устанавливаем максимальную ширину как у app-container, чтобы она совпадала с футером */
     max-width: 480px; /* Сохранено 480px */
@@ -353,6 +397,9 @@ body {
     .app-header {
         border-top-left-radius: 0;
         border-top-right-radius: 0;
+        border-bottom-left-radius: 0; /* Убедитесь, что на маленьких экранах нет скругления снизу */
+        border-bottom-right-radius: 0; /* Убедитесь, что на маленьких экранах нет скругления снизу */
+        max-width: 100%; /* Убедитесь, что на маленьких экранах она занимает всю ширину */
     }
     .bottom-nav {
         border-radius: 0; /* На маленьких экранах убираем скругление углов для полной ширины */

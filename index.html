@@ -5,20 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fellbacher Weingärtner App</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Подключаем Font Awesome для иконок -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="app-container">
+        <!-- Заголовок приложения - теперь фиксированный -->
         <header class="app-header">
             <img src="https://fellbacher-weine.de/wp-content/uploads/2021/02/fellbacherWeine_2018-300x51-1.png"
                  alt="Fellbacher Weingärtner Logo"
                  class="header-logo"
                  onerror="this.onerror=null;this.src='https://placehold.co/300x51/8B0000/FFFFFF?text=Fellbacher+Weingärtner+Logo';">
-            <p class="header-subtitle">Ihre Weinwelt in der Tasche</p>
+            <div class="header-icons">
+                <!-- Иконка колокольчика -->
+                <a href="#" class="header-icon-link">
+                    <i class="fas fa-bell header-icon"></i>
+                </a>
+                <!-- Иконка корзины -->
+                <a href="#" class="header-icon-link">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                </a>
+            </div>
         </header>
 
         <main class="main-content">
             <section class="customer-card-section">
+                <!-- Подзаголовок теперь h1 и перемещен сюда, стал первым элементом -->
+                <h1 class="header-subtitle">Ihre Weinwelt in der Tasche</h1>
                 <h2 class="section-title">Ihre Digitale Kundenkarte</h2>
                 <div class="qr-code-placeholder">
                     <svg class="qr-code-icon" fill="currentColor" viewBox="0 0 24 24">
@@ -33,7 +47,7 @@
                 <div class="feature-cards-grid">
                     <div class="feature-card">
                         <div class="feature-image-wrapper">
-                            <img src="https://business.trustedshops.de/hubfs/1-TS_B2B/content/DE/20220902-treueprogramm-e-commerce/cw-loyalty-program-online-shop-bonus-program-discount-w720h405.jpg" alt="Image for Loyalty Program" class="feature-image">
+                            <img src="https://business.trustedshops.de/hubfs/1-TS_B2B/content/DE/20220902-treueprogramm-e-commerce/cw-loyalty-program-online-shop-bonus-program-discount-w720h405.jpg" alt="" class="feature-image">
                         </div>
                         <div class="feature-bottom-section">
                             <div class="feature-icon-wrapper">
@@ -50,16 +64,17 @@
 
                     <div class="feature-card">
                         <div class="feature-image-wrapper">
-                            <img src="https://fellbacher-weine.de/wp-content/uploads/2022/12/Banner-Shop.jpg" alt="Image for Wine Catalog" class="feature-image">
+                            <img src="https://fellbacher-weine.de/wp-content/uploads/2022/12/Banner-Shop.jpg" alt="" class="feature-image">
                         </div>
                         <div class="feature-bottom-section">
                             <div class="feature-icon-wrapper">
-                                <svg class="feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                                <!-- Иконка "тачка в супермаркет" (корзина) -->
+                                <i class="fas fa-shopping-cart feature-icon"></i>
                             </div>
                             <div class="feature-card-content-wrapper">
                                 <div class="feature-main-content">
                                     <h3 class="feature-title">Weinkatalog</h3>
-                                    <p class="feature-description">Produktbeschreibungen, Empfehlungen, Bewertungen.</p>
+                                    <p class="feature-description">Produktbeschreibungen, Empfehlции, Bewertungen.</p>
                                 </div>
                             </div>
                         </div>
@@ -67,7 +82,7 @@
 
                     <div class="feature-card">
                         <div class="feature-image-wrapper">
-                            <img src="https://fellbacher-weine.de/wp-content/uploads/2023/04/Vorschaubild-Gutschein-1.jpg" alt="Image for Coupons" class="feature-image">
+                            <img src="https://fellbacher-weine.de/wp-content/uploads/2023/04/Vorschaubild-Gutschein-1.jpg" alt="" class="feature-image">
                         </div>
                         <div class="feature-bottom-section">
                             <div class="feature-icon-wrapper">
@@ -76,7 +91,7 @@
                             <div class="feature-card-content-wrapper">
                                 <div class="feature-main-content">
                                     <h3 class="feature-title">Gutscheine & Angebote</h3>
-                                    <p class="feature-description">Personalisierte Rabatte und exklusive Aktionen.</p>
+                                    <p class="feature-description">Personalisierte Rabatte и эксклюзивные акции.</p>
                                 </div>
                             </div>
                         </div>
@@ -84,7 +99,7 @@
 
                     <div class="feature-card">
                         <div class="feature-image-wrapper">
-                            <img src="https://blog.echt-wuerttemberger.de/wp-content/uploads/2025/07/FETE_1.jpg" alt="Image for News" class="feature-image">
+                            <img src="https://blog.echt-wuerttemberger.de/wp-content/uploads/2025/07/FETE_1.jpg" alt="" class="feature-image">
                         </div>
                         <div class="feature-bottom-section">
                             <div class="feature-icon-wrapper">
