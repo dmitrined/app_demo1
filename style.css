@@ -34,6 +34,7 @@ body {
 /* Заголовок приложения - теперь фиксированный */
 .app-header {
     background-color: #f3f4f6;
+    height: 50px; /* Уменьшаем высоту заголовка */
     /* Изменено: padding по горизонтали теперь 24px, как у main-content */
     padding: 10px 24px; /* Уменьшаем padding для фиксированной высоты */
     text-align: center;
